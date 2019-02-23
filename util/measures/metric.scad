@@ -1,23 +1,23 @@
 include <cornucopia/util/measures/standard.scad>
 
-nm =    0.000001 * mm;
-um =    0.001 * mm;
-cm =    10.0 * mm;
-dm =    100.0 * mm;
-m =     1000.0 * mm;
-dam =   10000.0 * mm;
-hm =    100000.0 * mm;
-km =    1000000.0 * mm;
+NM =    0.000001 * MM;
+UM =    0.001 * MM;
+CM =    10.0 * MM;
+DM =    100.0 * MM;
+M =     1000.0 * MM;
+DAM =   10000.0 * MM;
+HM =    100000.0 * MM;
+KM =    1000000.0 * MM;
 
-M2 = 2 * mm;
-M3 = 3 * mm;
-M4 = 4 * mm;
-M5 = 5 * mm;
-M6 = 6 * mm;
-M8 = 8 * mm;
-M10 = 10 * mm;
+M2 = 2 * MM;
+M3 = 3 * MM;
+M4 = 4 * MM;
+M5 = 5 * MM;
+M6 = 6 * MM;
+M8 = 8 * MM;
+M10 = 10 * MM;
 
 module testMetric() {
-    echo(testEqual("3 meters to mm", 3 * m, 3000));
-    echo(testEqual("999.9 km to mm", 999.9 * km, 999900000));
+    echo(TST_equal("3 meters to mm", 3 * M, 3000));
+    echo(TST_equal("999.9 km to mm", 999.9 * KM, 999900000));
 }

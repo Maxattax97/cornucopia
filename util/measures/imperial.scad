@@ -1,19 +1,19 @@
 include <cornucopia/util/measures/standard.scad>
 
-in = 25.4 * mm;
-ft = 304.8 * mm;
-yd = 914.4 * mm;
-mi = 1609344.0 * mm;
-thou = 0.0254 * mm;
-mil = thou;
+IN = 25.4 * MM;
+FT = 304.8 * MM;
+YD = 914.4 * MM;
+MI = 1609344.0 * MM;
+THOU = 0.0254 * MM;
+MIL = THOU;
 
-inch = in;
-foot = ft;
-feet = ft;
-yard = yd;
-mile = mi;
+INCH = IN;
+FOOT = FT;
+FEET = FT;
+YARD = YD;
+MILE = MI;
 
 module testImperial() {
-    echo(testApproximately("3 yards to mm", 3 * yd, 2743.2));
-    echo(testApproximately("999.9 in to mm", 999.9 * in, 25397.46));
+    echo(TST_approximately("3 yards to mm", 3 * YD, 2743.2));
+    echo(TST_approximately("999.9 in to mm", 999.9 * IN, 25397.46));
 }

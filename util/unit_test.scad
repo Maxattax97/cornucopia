@@ -6,56 +6,56 @@
 include <cornucopia/util/util.scad>
 include <cornucopia/util/measures/standard.scad>
 
-function pass(name) = str(name, " passed");
+function TST_pass(name) = str(name, " passed");
 
-function fail(name, type, value, expected) =
+function TST_fail(name, type, value, expected) =
     str(name, " failed.  Got ", value,
         ". Expected to ", type, " ", expected);
 
-function testEqual(name, value, expected) =
-    equal(value, expected) ?
-    pass(name) :
-    fail(name, "equal", value, expected);
+function TST_equal(name, value, expected) =
+    UTL_equal(value, expected) ?
+    TST_pass(name) :
+    TST_fail(name, "equal", value, expected);
 
-function testNotEqual(name, value, expected) =
-    (!equal(value, expected)) ?
-    pass(name) :
-    fail(name, "not equal", value, expected);
+function TST_notEqual(name, value, expected) =
+    (!UTL_equal(value, expected)) ?
+    TST_pass(name) :
+    TST_fail(name, "not equal", value, expected);
 
-function testTrue(name, value) =
+function TST_true(name, value) =
     value ?
-    pass(name) :
-    fail(name, "equal", value, true);
+    TST_pass(name) :
+    TST_fail(name, "equal", value, true);
 
-function testFalse(name, value) =
+function TST_false(name, value) =
     (!value) ?
-    pass(name) :
-    fail(name, "equal", value, false);
+    TST_pass(name) :
+    TST_fail(name, "equal", value, false);
 
-function testIn(name, value, expected) =
-    (contains(expected, value)) ?
-    pass(name) :
-    fail(name, "be in", value, expected);
+function TST_in(name, value, expected) =
+    (UTL_contains(expected, value)) ?
+    TST_pass(name) :
+    TST_fail(name, "be in", value, expected);
 
-function testNotIn(name, value, expected) =
-    (!contains(expected, value)) ?
-    pass(name) :
-    fail(name, "not be in", value, expected);
+function TST_notIn(name, value, expected) =
+    (!UTL_contains(expected, value)) ?
+    TST_pass(name) :
+    TST_fail(name, "not be in", value, expected);
 
-function testApproximately(name, value, fuzzy_expected) =
-    fuzzy_expected < value + epsilon ?
-    fuzzy_expected > value - epsilon ? 
-    pass(name) :
-    fail(name, "approximately equal", value, fuzzy_expected) :
-    fail(name, "approximately equal", value, fuzzy_expected);
+function TST_approximately(name, value, fuzzy_expected) =
+    fuzzy_expected < value + EPSILON ?
+    fuzzy_expected > value - EPSILON ? 
+    TST_pass(name) :
+    TST_fail(name, "approximately equal", value, fuzzy_expected) :
+    TST_fail(name, "approximately equal", value, fuzzy_expected);
     
 
 module testUnitTest() {
-    echo(testEqual("Equality", [1, 2, 4, 8], [1, 2, 4, 8]));
-    echo(testNotEqual("Non-equality", [1, 2, 4, 8], [0, 1, 1, 2]));
-    echo(testTrue("Truthiness", 1 + 1 == 2));
-    echo(testFalse("Falseness", 1 + 1 == 3));
-    echo(testIn("Presence", 4, [1, 2, 4, 8]));
-    echo(testNotIn("Absence", 16, [1, 2, 4, 8]));
-    echo(testApproximately("Approximately Equal", 15 + (epsilon / 2), 15));
+    echo(TST_equal("Equality", [1, 2, 4, 8], [1, 2, 4, 8]));
+    echo(TST_notEqual("Non-equality", [1, 2, 4, 8], [0, 1, 1, 2]));
+    echo(TST_true("Truthiness", 1 + 1 == 2));
+    echo(TST_false("Falseness", 1 + 1 == 3));
+    echo(TST_in("Presence", 4, [1, 2, 4, 8]));
+    echo(TST_notIn("Absence", 16, [1, 2, 4, 8]));
+    echo(TST_approximately("Approximately Equal", 15 + (EPSILON / 2), 15));
 }
