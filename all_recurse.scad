@@ -1,1 +1,17 @@
+include <cornucopia/mechanical/all_recurse.scad>
 include <cornucopia/util/all_recurse.scad>
+include <cornucopia/suspension/all_recurse.scad>
+include <cornucopia/utensils/all_recurse.scad>
+include <cornucopia/fasteners/all_recurse.scad>
+include <cornucopia/building/all_recurse.scad>
+include <cornucopia/plumbing/all_recurse.scad>
+include <cornucopia/seals/all_recurse.scad>
+include <cornucopia/furniture/all_recurse.scad>
+include <cornucopia/power/all_recurse.scad>
+include <cornucopia/filters/all_recurse.scad>
+include <cornucopia/geometry/all_recurse.scad>
+include <cornucopia/materials/all_recurse.scad>
+include <cornucopia/electrical/all_recurse.scad>
+include <cornucopia/fabricators/all_recurse.scad>
+include <cornucopia/hvac/all_recurse.scad>
+include <cornucopia/all.scad>

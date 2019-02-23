@@ -1,7 +1,7 @@
 all: wildcard fix test
 
 wildcard:
-	@echo "Not yet implemented"
+	@python3 ./scripts/wildcard.py
 
 fix:
 	@find . \( -name "*.scad" \) -exec uncrustify -c .uncrustify.cfg --no-backup {} +
