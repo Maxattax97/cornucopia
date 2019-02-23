@@ -35,7 +35,7 @@ def collect_modules(directory=None):
             if filename.endswith('.scad') and \
                     not (filename.startswith('all.') or
                          filename.startswith('all_recurse.')):
-                print(root + '/' + filename)
+                #  print(root + '/' + filename)
                 test_files[root + '/' + filename] = \
                     os.path.basename(filename)[:-1 * len('.scad')]
     return test_files
@@ -64,9 +64,7 @@ def pytest_generate_tests(metafunc):
             pairs.append([module_name, path])
             pair_ids.append(str(i) + '.' + module_name)
             i += 1
-            # os.system("cp %s %s/" % (fpath, temppath))
-            #  print(module_name, 'wazoo', [module_name, path])
-        print(pairs)
+        #  print(pairs)
         metafunc.parametrize(
             ids=pair_ids,
             argnames=['module_name', 'module_path'],
@@ -93,7 +91,7 @@ include <cornucopia/util/unit_test.scad>
 cube([1,1,1]);
 test%s();""" % (module_name, module_path, 'cornucopia' + module_path[1:],
                 fixed_module_name)
-    print(test_code)
+    #  print(test_code)
     code_file.write(test_code)
     code_file.flush()
     result = compile_openscad(code_path, stl_path)
@@ -106,4 +104,4 @@ test%s();""" % (module_name, module_path, 'cornucopia' + module_path[1:],
     return result
 
 
-print(collect_modules())
+#  print(collect_modules())
