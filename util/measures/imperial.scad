@@ -12,3 +12,8 @@ foot = ft;
 feet = ft;
 yard = yd;
 mile = mi;
+
+module testImperial() {
+    echo(testApproximately("3 yards to mm", 3 * yd, 2743.2));
+    echo(testApproximately("999.9 in to mm", 999.9 * in, 25397.46));
+}

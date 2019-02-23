@@ -163,7 +163,7 @@ function onePoleFilter(vector, coefficient, previous=undef) =
     )
     concat(next, onePoleFilter(remainder, coefficient, next));
 
-module test_util() {
+module testUtil() {
     echo(testTrue("Iterable", iterable([1, 2, 3])));
     echo(testFalse("Not iterable", iterable(1)));
 

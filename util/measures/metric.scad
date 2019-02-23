@@ -16,3 +16,8 @@ M5 = 5 * mm;
 M6 = 6 * mm;
 M8 = 8 * mm;
 M10 = 10 * mm;
+
+module testMetric() {
+    echo(testEqual("3 meters to mm", 3 * m, 3000));
+    echo(testEqual("999.9 km to mm", 999.9 * km, 999900000));
+}

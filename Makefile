@@ -7,4 +7,4 @@ fix:
 	@find . \( -name "*.scad" \) -exec uncrustify -c .uncrustify.cfg --no-backup {} +
 
 test:
-	@python3 -m pytest
+	@OPENSCADPATH=/home/max/.local/share/OpenSCAD/libraries python3 -m pytest
