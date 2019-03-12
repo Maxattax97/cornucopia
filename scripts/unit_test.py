@@ -41,11 +41,11 @@ def collect_modules(directory=None):
     return test_files
 
 
-def compile_openscad(source_path, stl_path, timeout=5):
+def compile_openscad(source_path, ast_path, timeout=5):
     try:
         output = subprocess.check_output(
             ['openscad', '-o',
-             str(stl_path), str(source_path)],
+             str(ast_path), str(source_path)],
             timeout=timeout,
             stderr=subprocess.STDOUT)
         return 0, str(output)
@@ -78,7 +78,7 @@ def pytest_sessionfinish():
 def test_compile_module(module_name, module_path):
     temp_filename = 'test_' + module_name
     code_path = os.path.join(TEMP_DIR_PATH, temp_filename + '.scad')
-    stl_path = os.path.join(TEMP_DIR_PATH, temp_filename + '.stl')
+    ast_path = os.path.join(TEMP_DIR_PATH, temp_filename + '.ast')
     code_file = open(code_path, 'w+')
     fixed_module_name = snake_to_camel_case(module_name)
     fixed_module_name = fixed_module_name[0].upper() + fixed_module_name[1:]
@@ -88,19 +88,19 @@ include <cornucopia/util/unit_test.scad>
 
 // Add a simple cube so that a geometry always exists to form a cube in
 // the top level.
-cube([1,1,1]);
+//cube([1,1,1]);
 test%s();""" % (module_name, module_path, 'cornucopia' + module_path[1:],
                 fixed_module_name)
     #  print(test_code)
     code_file.write(test_code)
     code_file.flush()
-    result = compile_openscad(code_path, stl_path)
-    cleaned_output = result[1].strip().lower()
-    assert 'warning' not in cleaned_output
-    assert 'error' not in cleaned_output
-    assert 'failed' not in cleaned_output
+    result = compile_openscad(code_path, ast_path)
+    cleaned_output = result[1].strip()
+    assert 'WARNING' not in cleaned_output
+    assert 'ERROR' not in cleaned_output
+    assert 'fail' not in cleaned_output.lower()
     assert result[0] == 0
-    assert os.path.getsize(stl_path) > 2
+    assert os.path.getsize(ast_path) > 2
     return result
 
 
