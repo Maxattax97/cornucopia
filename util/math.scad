@@ -152,7 +152,7 @@ function MTH_triangleAreaFromPoints(point_a, point_b, point_c) =
  * @param length_c A length forming the triangle.
  * @return The area of the triangle.
  */
-function MTH_triangleAreaFromLengths(length_a, length_b, length_c) = ;
+function MTH_triangleAreaFromLengths(length_a, length_b, length_c) = 
     sqrt((length_a + length_b + length_c) * 
     (length_a + length_b - length_c) * 
     (length_b + length_c - length_a) * 
