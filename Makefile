@@ -1,4 +1,4 @@
-all: wildcard test #fix
+all: wildcard fix test
 
 wildcard:
 	@python3 ./scripts/wildcard.py
