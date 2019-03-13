@@ -13,6 +13,10 @@ SQRT_3 = 1.73205080756887729352744634150587236694280525381038;
 SQRT_5 = 2.23606797749978969640917366873127623544061835961152;
 SQRT_7 = 2.64575131106459059050161575363926042571025918308245;
 
-module testConstants() {
-    echo(TST_approximately("Area of a circle of radius sqrt(7)", PI * SQRT_7 * SQRT_7, 21.99114857513));
+module
+testConstants()
+{
+    echo(TST_approximately("Area of a circle of radius sqrt(7)",
+                           PI * SQRT_7 * SQRT_7,
+                           21.99114857513));
 }
