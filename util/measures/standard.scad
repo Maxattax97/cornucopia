@@ -1,3 +1,4 @@
+
 MM = 1.0;
 
 X = [ 1, 0, 0 ];
@@ -8,6 +9,12 @@ ORIGIN = [ 0, 0, 0 ];
 // Useful for small distances to maintain manifold geometry.
 EPSILON = 0.01 * MM;
 OS = EPSILON;
+
+// Various drawing resolution for different standard qualities.
+RESOLUTION_DRAFT = 6;
+RESOLUTION_PROTOTYPE = 12;
+RESOLUTION_PRODUCTION = 24;
+$fn = RESOLUTION_PROTOTYPE;
 
 // Convert to and from degrees and radians.
 RAD = 1.0;
